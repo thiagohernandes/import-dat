@@ -1,2 +1,4 @@
-# import-dat
-Importação e geração de relatório baseado em arquivos ".dat"
+# import-dat - Projeto Java importador de arquivos ".dat"
+
+### Instrução
+- TODO
