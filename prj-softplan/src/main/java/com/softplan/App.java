@@ -22,11 +22,11 @@ import java.util.stream.Stream;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
-        List<String> arquivosImportados = new ArrayList<>();
+        final List<String> arquivosImportados = new ArrayList<>();
 
         WatchService watchService = FileSystems.getDefault().newWatchService();
 
-        Path path = Paths.get(ParametrosUtil.userHomePath.concat(ParametrosUtil.path));
+        final Path path = Paths.get(ParametrosUtil.userHomePath.concat(ParametrosUtil.path));
 
         path.register(watchService,StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY);
         WatchKey key;
@@ -34,20 +34,19 @@ public class App {
             for (WatchEvent<?> event : key.pollEvents()) {
                 AtomicReference<String> nomeArquivo = new AtomicReference<>("");
                     AtomicBoolean importouArquivo = new AtomicBoolean(false);
-                        nomeArquivo.getAndSet(event.context().toString());
-                        if (arquivosImportados.stream().filter(nome -> nome.equalsIgnoreCase(nomeArquivo.get())).count() > 0) {
-                            importouArquivo.getAndSet(true);
-                        }
-                        if (importouArquivo.get() == false) {
-                            arquivosImportados.add(nomeArquivo.get());
-                        }
+                    nomeArquivo.getAndSet(event.context().toString());
+                    if (arquivosImportados.stream().filter(nome -> nome.equalsIgnoreCase(nomeArquivo.get())).count() > 0) {
+                        importouArquivo.getAndSet(true);
+                    }
+                    if (importouArquivo.get() == false) {
+                        arquivosImportados.add(nomeArquivo.get());
+                    }
 
                     if (importouArquivo.get() == false && nomeArquivo.get() != null) {
 
                         List<VendedorVenda> listaValorVenda = new ArrayList<>();
-                        VendaUtil vendaUtil = new VendaUtil();
 
-                        String arquivoImportacao = ParametrosUtil.userHomePath.concat(ParametrosUtil.dataInPath)
+                        final String arquivoImportacao = ParametrosUtil.userHomePath.concat(ParametrosUtil.dataInPath)
                                 .concat(nomeArquivo.get());
 
                         AtomicInteger qtdClientes = new AtomicInteger(0);
@@ -57,14 +56,14 @@ public class App {
 
                             try (Stream<String> stream = Files.lines(Paths.get(arquivoImportacao))) {
                                 stream.forEach(item -> {
-                                    if (vendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.venda)) {
-                                        listaValorVenda.add(vendaUtil.totalVendaVendedor(item.split("ç")[2],
+                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.venda)) {
+                                        listaValorVenda.add(VendaUtil.totalVendaVendedor(item.split("ç")[2],
                                                 item.split("ç")[3], item.split("ç")[1]));
                                     }
-                                    if (vendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.vendedor)) {
+                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.vendedor)) {
                                         qtdVendedores.incrementAndGet();
                                     }
-                                    if (vendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.cliente)) {
+                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.cliente)) {
                                         qtdClientes.incrementAndGet();
                                     }
                                 });
@@ -81,7 +80,6 @@ public class App {
 
                                 new MontarReport().escreverSaidaArquivo(qtdClientes, qtdVendedores, listaValorVenda, piorVenda, nomeArquivo);
                                 Files.deleteIfExists(Paths.get(ParametrosUtil.userHomePath.concat(ParametrosUtil.dataInPath).concat(nomeArquivo.get())));
-                                arquivoImportacao = null;
                                 System.out.println(ParametrosUtil.mensagemOk);
                             } catch (IOException e) {
                                 System.err.print(ParametrosUtil.mensagemErro + e.getMessage());

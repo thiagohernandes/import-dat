@@ -15,7 +15,7 @@ public class VendaUtil {
         @param linha do arquivo .dat
         @return cliente, vendedor ou venda
     * */
-    public static String isClienteVendedorVenda(String linha) {
+    public static final String isClienteVendedorVenda(final String linha) {
         if(linha.split("ç")[1].length() < 11) {
             return "VENDA";
         }
@@ -29,8 +29,8 @@ public class VendaUtil {
         @param id venda
         @return VendedorVenda
     * */
-    public static VendedorVenda totalVendaVendedor(String itensVenda, String vendedor, String idVenda) {
-        String itensVendaFormatado = itensVenda.replace("[","").replace("]","");
+    public static final VendedorVenda totalVendaVendedor(final String itensVenda, final String vendedor, final String idVenda) {
+        final String itensVendaFormatado = itensVenda.replace("[","").replace("]","");
         Double valorTotalVenda = 0.0;
         for(int x = 0; x < itensVendaFormatado.split(",").length; x++) {
             valorTotalVenda+=(Integer.valueOf(itensVendaFormatado.split(",")[x].split("-")[1])

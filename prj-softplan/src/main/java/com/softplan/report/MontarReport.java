@@ -26,11 +26,11 @@ public class MontarReport {
         @param pior venda (vendedor e valor)
         @return void
     * */
-    public void escreverSaidaArquivo (AtomicInteger qtdClientes,
-                                      AtomicInteger qtdVendedores,
-                                      List<VendedorVenda> listaValorVenda,
-                                      Map<String, Double> piorVenda,
-                                      AtomicReference<String> nomeArquivo) {
+    public void escreverSaidaArquivo (final AtomicInteger qtdClientes,
+                                      final AtomicInteger qtdVendedores,
+                                      final List<VendedorVenda> listaValorVenda,
+                                      final Map<String, Double> piorVenda,
+                                      final AtomicReference<String> nomeArquivo) {
         try {
             StringBuilder relatorio = new StringBuilder();
             relatorio.append("-- SOFTPLAN DESAFIO --");
