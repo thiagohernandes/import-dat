@@ -12,7 +12,10 @@ Clonar o projeto [import-dat](https://github.com/thiagohernandes/import-dat.git)
 
 ```sh
 $ git clone https://github.com/thiagohernandes/import-dat.git
-Executar o projeto
+cd import-dat/prj-dbcompany
+mvn clean package
+cd target
+java -jar prj-dbcompany-1.0-SNAPSHOT.jar 
 ```
 ### Arquivos
 No diretório "import-dat\arquivos-teste-import" existem alguns arquivos que foram realizados os testes.
