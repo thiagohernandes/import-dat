@@ -12,10 +12,7 @@ Clonar o projeto [import-dat](https://github.com/thiagohernandes/import-dat.git)
 
 ```sh
 $ git clone https://github.com/thiagohernandes/import-dat.git
-$ cd import-dat/prj-softplan
-$ mvn clean package
-$ cd target
-$ java -jar prj-softplan-1.0-SNAPSHOT
+Executar o projeto
 ```
 ### Arquivos
 No diretório "import-dat\arquivos-teste-import" existem alguns arquivos que foram realizados os testes.
