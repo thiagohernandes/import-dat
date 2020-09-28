@@ -54,7 +54,7 @@ public class App {
 
                         if (arquivoImportacao != null) {
 
-                            try (Stream<String> stream = Files.lines(Paths.get(arquivoImportacao))) {
+                            try (final Stream<String> stream = Files.lines(Paths.get(arquivoImportacao))) {
                                 stream.forEach(item -> {
                                     if (VendaUtil.isClienteVendedorVenda(item).get() == ParametrosUtil.venda) {
                                         listaValorVenda.add(VendaUtil.totalVendaVendedor(item.split("ç")[2],
