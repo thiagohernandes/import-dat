@@ -22,11 +22,11 @@ import java.util.stream.Stream;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
-        final List<String> arquivosImportados = new ArrayList<>();
+        List<String> arquivosImportados = new ArrayList<>();
 
         WatchService watchService = FileSystems.getDefault().newWatchService();
 
-        final Path path = Paths.get(ParametrosUtil.userHomePath.concat(ParametrosUtil.path));
+        Path path = Paths.get(ParametrosUtil.userHomePath.concat(ParametrosUtil.path));
 
         path.register(watchService,StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY);
         WatchKey key;
@@ -46,7 +46,7 @@ public class App {
 
                         List<VendedorVenda> listaValorVenda = new ArrayList<>();
 
-                        final String arquivoImportacao = ParametrosUtil.userHomePath.concat(ParametrosUtil.dataInPath)
+                         String arquivoImportacao = ParametrosUtil.userHomePath.concat(ParametrosUtil.dataInPath)
                                 .concat(nomeArquivo.get());
 
                         AtomicInteger qtdClientes = new AtomicInteger(0);
@@ -56,14 +56,14 @@ public class App {
 
                             try (Stream<String> stream = Files.lines(Paths.get(arquivoImportacao))) {
                                 stream.forEach(item -> {
-                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.venda)) {
+                                    if (VendaUtil.isClienteVendedorVenda(item).get() == ParametrosUtil.venda) {
                                         listaValorVenda.add(VendaUtil.totalVendaVendedor(item.split("ç")[2],
                                                 item.split("ç")[3], item.split("ç")[1]));
                                     }
-                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.vendedor)) {
+                                    if (VendaUtil.isClienteVendedorVenda(item).get() == ParametrosUtil.vendedor) {
                                         qtdVendedores.incrementAndGet();
                                     }
-                                    if (VendaUtil.isClienteVendedorVenda(item).equalsIgnoreCase(ParametrosUtil.cliente)) {
+                                    if (VendaUtil.isClienteVendedorVenda(item).get() == ParametrosUtil.cliente) {
                                         qtdClientes.incrementAndGet();
                                     }
                                 });

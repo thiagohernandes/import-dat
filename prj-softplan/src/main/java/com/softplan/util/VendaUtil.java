@@ -2,6 +2,8 @@ package com.softplan.util;
 
 import com.softplan.model.VendedorVenda;
 
+import java.util.concurrent.atomic.AtomicReference;
+
 /*
     VendaUtil - funções de tratativa de vendedor e venda
     @since: 26/09/2020
@@ -15,11 +17,12 @@ public class VendaUtil {
         @param linha do arquivo .dat
         @return cliente, vendedor ou venda
     * */
-    public static final String isClienteVendedorVenda(final String linha) {
+    public static AtomicReference<String> isClienteVendedorVenda(String linha) {
         if(linha.split("ç")[1].length() < 11) {
-            return "VENDA";
+            return new AtomicReference<String>("VENDA");
         }
-        return linha.split("ç")[1].length() > 13 ? "CLIENTE" : "VENDEDOR";
+        return linha.split("ç")[1].length() > 13 ? new AtomicReference<String>("CLIENTE") :
+        new AtomicReference<String>("VENDEDOR");
     }
 
     /*  Retorno do valor total de venda por vendedor/item
@@ -29,8 +32,8 @@ public class VendaUtil {
         @param id venda
         @return VendedorVenda
     * */
-    public static final VendedorVenda totalVendaVendedor(final String itensVenda, final String vendedor, final String idVenda) {
-        final String itensVendaFormatado = itensVenda.replace("[","").replace("]","");
+    public static VendedorVenda totalVendaVendedor(String itensVenda, String vendedor, String idVenda) {
+        String itensVendaFormatado = itensVenda.replace("[","").replace("]","");
         Double valorTotalVenda = 0.0;
         for(int x = 0; x < itensVendaFormatado.split(",").length; x++) {
             valorTotalVenda+=(Integer.valueOf(itensVendaFormatado.split(",")[x].split("-")[1])
