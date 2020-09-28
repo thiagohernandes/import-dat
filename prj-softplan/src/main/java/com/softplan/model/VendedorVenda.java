@@ -1,8 +1,14 @@
 package com.softplan.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
+
+/*
+    VendedorVenda - classe auxiliar para armazenar dados de vededor, id venda e
+    valor de venda por itens
+    @since: 26/09/2020
+    @author: Thiago Hernandes
+ */
 
 @Data
 public class VendedorVenda {

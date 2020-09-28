@@ -1,0 +1,41 @@
+
+S
+java:S1444"1Make this "public static dataOutPath" field final(Î‚á½üÿÿÿÿ8ì’½Í.
+T
+java:S1444
+"2Make this "public static mensagemErro" field final(ÅûÿÑúÿÿÿÿ8ì’½Í.
+\
+java:S1118":Add a private constructor to hide the implicit public one.(ŞÂª„şÿÿÿÿ8ì’½Í.
+G
+java:S1444"*Make this "public static path" field final(ÍÑ¨Ï8×šìÍ.
+m
+java:S1104"PMake path a static final constant or non-public and provide accessors if needed.(ÍÑ¨Ï8×šìÍ.
+s
+java:S1104"VMake dataInPath a static final constant or non-public and provide accessors if needed.(ƒË´Ÿ8ì’½Í.
+H
+java:S1444"+Make this "public static venda" field final(ˆ¦ò8ì’½Í.
+x
+java:S1104	"VMake mensagemOk a static final constant or non-public and provide accessors if needed.(Ü¡Ì®üÿÿÿÿ8ì’½Í.
+M
+java:S1444"0Make this "public static dataInPath" field final(ƒË´Ÿ8ì’½Í.
+n
+java:S1104"QMake venda a static final constant or non-public and provide accessors if needed.(ˆ¦ò8ì’½Í.
+P
+java:S1444".Make this "public static vendedor" field final(™µÆüÿÿÿÿ8ì’½Í.
+T
+java:S1444"2Make this "public static userHomePath" field final(úèé²ÿÿÿÿÿ8Ò†ºÍ.
+v
+java:S1104"TMake vendedor a static final constant or non-public and provide accessors if needed.(™µÆüÿÿÿÿ8ì’½Í.
+z
+java:S1104"XMake userHomePath a static final constant or non-public and provide accessors if needed.(úèé²ÿÿÿÿÿ8Ò†ºÍ.
+u
+java:S1104"SMake cliente a static final constant or non-public and provide accessors if needed.(œÂÒ­ÿÿÿÿÿ8ì’½Í.
+R
+java:S1444	"0Make this "public static mensagemOk" field final(Ü¡Ì®üÿÿÿÿ8ì’½Í.
+y
+java:S1104"WMake dataOutPath a static final constant or non-public and provide accessors if needed.(Î‚á½üÿÿÿÿ8ì’½Í.
+z
+java:S1104
+"XMake mensagemErro a static final constant or non-public and provide accessors if needed.(ÅûÿÑúÿÿÿÿ8ì’½Í.
+O
+java:S1444"-Make this "public static cliente" field final(œÂÒ­ÿÿÿÿÿ8ì’½Í.
