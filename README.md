@@ -1,4 +1,4 @@
-# Softplan Import - Java SE
+# DBCompany Import - Java SE
 
 Projeto desenvolvido para importação de arquvos ".data" e emissão de relatório com as seguintes informações: 
 ● Quantidade de clientes no arquivo de entrada
