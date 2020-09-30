@@ -19,6 +19,9 @@ java -jar prj-dbcompany-1.0-SNAPSHOT.jar
 ```
 ### Arquivos
 No diretório "import-dat\arquivos-teste-import" existem alguns arquivos que foram realizados os testes.
-- Basta copiar ou arrastar os arquivos para a criação do relatório de saída na pasta "data/out";
+- Basta copiar ou arrastar os arquivos para o diretório home do Windows/Usuários "data/in" que em seguida, conforme desafio enviado, serão copiados para a pasta "data/out" renomeados no formato "nome-arquivo.done.dat";
 - OBS: arquivos com nomes repetidos serão descartados caso sejam copiados novamente para o diretório;
 - Atenção! Os arquivos serão excluídos do diretório "data/in" após serem importados;
+
+### Testes
+- foram utilizados: JUnit e Mockito nas principais classes de handler das linhas dos arquivos;
