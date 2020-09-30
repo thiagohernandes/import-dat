@@ -10,22 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/*
-    MontarReport - funçõe de relatório
-    @since: 26/09/2020
-    @author: Thiago Hernandes
- */
 public class MontarReport {
 
-    /*  Criar arquivo no diretório data/out
-        @since: 26/09/2020
-        @param qtd de clientes
-        @param qtd de vendedores
-        @param lista com valores venda
-        @param pior venda (vendedor e valor)
-        @return void
-    * */
+    private static final Logger LOGGER = Logger.getLogger(MontarReport.class.getName());
+
     public void escreverSaidaArquivo (final AtomicInteger qtdClientes,
                                       final AtomicInteger qtdVendedores,
                                       final List<VendedorVenda> listaValorVenda,
@@ -33,7 +24,7 @@ public class MontarReport {
                                       final AtomicReference<String> nomeArquivo) {
         try {
             StringBuilder relatorio = new StringBuilder();
-            relatorio.append("-- SOFTPLAN DESAFIO --");
+            relatorio.append("^^ DBCOMPANY DESAFIO ^^");
             relatorio.append("\nQuantidade de clientes: " + qtdClientes);
             relatorio.append("\nQuantidade de vendedores: " + qtdVendedores);
             relatorio.append("\nID e valor da vend mais cara: ID: " + listaValorVenda.get(0).getIdVenda() + " R$ " +
@@ -45,8 +36,9 @@ public class MontarReport {
                             .concat(nomeArquivo.get().replace(".dat", ""))
                             .concat(".done.dat")),
                     relatorio.toString().getBytes());
+            LOGGER.info(ParametrosUtil.mensagemEscritaOkArquivo + nomeArquivo);
         } catch (Exception e) {
-            System.err.println("Houve o seguinte erro: "+ e.getMessage());
+            LOGGER.log(Level.SEVERE, ParametrosUtil.mensagemErroArquivoSaida + e.getMessage());
         }
     }
 
